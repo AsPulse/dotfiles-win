@@ -1,0 +1,38 @@
+set encoding=utf-8
+set wildmenu
+set ruler
+set cursorline
+set expandtab
+set tabstop=2
+set shiftwidth=2
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'lambdalisue/fern.vim'
+Plug 'TheLeoP/fern-renderer-web-devicons.nvim'
+Plug 'cohama/lexima.vim'
+
+call plug#end()
+
+
+function! s:init_fern() abort
+  " Use 'select' instead of 'edit' for default 'open' action
+  nmap <buffer> <Plug>(fern-action-open) <Plug>(fern-action-open:select)
+endfunction
+
+augroup fern-custom
+  autocmd! *
+  autocmd FileType fern call s:init_fern()
+augroup END
+
+autocmd VimEnter * Fern . -reveal=%
+
+" use <tab> to trigger completion and navigate to the next complete item
+inoremap <silent><expr> <Tab> coc#pum#visible() ? coc#pum#confirm() : "\<Tab>"
+inoremap <silent><expr> <C-.> <Plug>(coc-codeaction-cursor)
+
+nnoremap <C-f> <cmd>Fern . -reveal=%<cr>
+
+" let g:fern#renderer = "nvim-web-devicons"
+
