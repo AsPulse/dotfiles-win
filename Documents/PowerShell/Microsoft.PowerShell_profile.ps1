@@ -21,8 +21,9 @@ Import-Module 'C:\Users\aspulse\bin\posh-git\src\posh-git.psd1'
 Import-Module yarn-completion
 Import-Module Terminal-Icons
 
-
+Set-Alias v neovide
 Set-Alias vim nvim
+
 Set-Alias touch New-Item
 function importgconfig {
   git config --local include.path ../.gitconfig
