@@ -13,16 +13,6 @@ end
 
 local Terminal = require("toggleterm.terminal").Terminal
 
-local BgTerm = Terminal:new({
-  dir = vim.fn.getcwd(),
-  direction = "horizontal",
-  hidden = true,
-  count = 2,
-})
-
-function _bgterm_toggle()
-  BgTerm:toggle()
-end
 
 function _lazygit_toggle()
   Terminal:new({
@@ -40,7 +30,5 @@ function _toggleterm_cd()
 end
 
 vim.api.nvim_set_keymap("n", "git", "<cmd>lua _lazygit_toggle()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "bgterm", "<cmd>lua _bgterm_toggle()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<leader>bgterm", "<cmd>lua _bgterm_toggle()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<leader>leave", "<C-\\><C-n><cmd>wincmd k<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<esc><esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true })
 vim.api.nvim_create_user_command('TermReCwd', "lua _toggleterm_cd()", {})
