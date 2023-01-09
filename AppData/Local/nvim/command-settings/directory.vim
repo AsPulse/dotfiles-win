@@ -1,4 +1,3 @@
-command! Editprofile e $POSH_PROFILE
 command! Editrc cd $CHEZMOI | Fern . -reveal=AppData/Local/nvim/init.vim
 command! Reloadrc call s:reload()
 command! Gogithub e $GHDEV
