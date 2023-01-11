@@ -1,8 +1,8 @@
 Set-PSReadLineKeyHandler -Key Tab -Function MenuComplete
 
-$NVIM = "~\AppData\Local\nvim"
+$NVIM = "$HOME\AppData\Local\nvim"
 $GHDEV = "E:\Persistent\GitHub-Develops"
-$CHEZMOI= "~\.local\share\chezmoi"
+$CHEZMOI= "$HOME\.local\share\chezmoi"
 
 $ENV:POSH_PROFILE = $PROFILE
 $ENV:NVIM = $NVIM

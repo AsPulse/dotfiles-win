@@ -1,4 +1,7 @@
 {
   "eslint.packageManager": "yarn",
-  "eslint.autoFixOnSave": true
+  "eslint.autoFixOnSave": true,
+  "sumneko-lua.enableNvimLuaDev": true,
+  "Lua.telemetry.enable": true,
+  "Lua.diagnostics.globals": ["vim"]
 }

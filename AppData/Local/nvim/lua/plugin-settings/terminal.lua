@@ -1,3 +1,8 @@
+local modules = {
+  { 'akinsho/toggleterm.nvim' },
+}
+
+
 local powershell_options = {
   shell = vim.fn.executable "pwsh" == 1 and "pwsh" or "powershell",
   shellcmdflag = "-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;",
@@ -11,11 +16,8 @@ for option, value in pairs(powershell_options) do
   vim.opt[option] = value
 end
 
-local Terminal = require("toggleterm.terminal").Terminal
-
-
-function _lazygit_toggle()
-  Terminal:new({
+function _Lazygit_toggle()
+  require('toggleterm.terminal').Terminal:new({
     cmd = "lazygit",
     dir = vim.fn.getcwd(),
     direction = "float",
@@ -25,10 +27,12 @@ function _lazygit_toggle()
 end
 
 
-function _toggleterm_cd()
-  require'toggleterm'.exec("cd "..vim.fn.getcwd(), 2)
+function _Toggleterm_cd()
+  require('toggleterm').exec("cd "..vim.fn.getcwd(), 2)
 end
 
-vim.api.nvim_set_keymap("n", "git", "<cmd>lua _lazygit_toggle()<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "git", "<cmd>lua _Lazygit_toggle()<cr>", { noremap = true, silent = true })
 vim.api.nvim_set_keymap("t", "<esc><esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true })
-vim.api.nvim_create_user_command('TermReCwd', "lua _toggleterm_cd()", {})
+vim.api.nvim_create_user_command('TermReCwd', "lua _Toggleterm_cd()", {})
+
+return modules

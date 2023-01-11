@@ -1,2 +1,0 @@
-Plug 'deris/vim-duzzle'
-
