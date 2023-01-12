@@ -66,4 +66,37 @@ vim.keymap.set('n', 'gy', '<Plug>(coc-type-definition)', remap)
 vim.keymap.set('n', 'gi', '<Plug>(coc-implementation)', remap)
 vim.keymap.set('n', 'gr', '<Plug>(coc-references)', remap)
 
+
+vim.api.nvim_create_autocmd(
+  { 'InsertLeave', 'TextChanged' }, {
+    pattern = { '*.ts', '*.tsx' },
+    callback = vim.schedule_wrap(function() Eslintfix() end)
+  }
+)
+
+
+local eslintRunning = false
+local eslintShouldRerun = false
+function Eslintfix()
+  if eslintRunning then
+    eslintShouldRerun = true
+    return
+  end
+  eslintRunning = true
+  eslintShouldRerun = false
+  require('notify')('ESLint Autofix Running...', 'info', { timeout = 500, render = 'minimal', stages = 'fade' })
+  vim.api.nvim_command('CocCommand eslint.executeAutofix')
+  vim.loop.new_timer():start(
+    1000, 0, vim.schedule_wrap(
+      function()
+        eslintRunning = false
+        if eslintShouldRerun then
+          Eslintfix()
+        end
+      end
+    )
+  )
+
+end
+
 return modules
