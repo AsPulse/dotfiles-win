@@ -15,7 +15,7 @@ function LeximaRulesReset()
      priority = 2,
      char = '<cr>',
      at = [[<[a-zA-Z]*>\%#<\/[a-zA-Z]*>]],
-     input = '<cr>  ',
+     input = '<cr>',
      input_after = '<cr>'
   })
   vim.api.nvim_set_var('isLeximaLoaded', true);
