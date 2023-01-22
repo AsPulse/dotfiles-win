@@ -14,7 +14,7 @@ function LeximaRulesReset()
      filetype = { 'typescriptreact', 'html' },
      priority = 2,
      char = '<cr>',
-     at = [[<[a-zA-Z]*>\%#<\/[a-zA-Z]*>]],
+     at = [[<.*>\%#<\/.*>]],
      input = '<cr>',
      input_after = '<cr>'
   })
