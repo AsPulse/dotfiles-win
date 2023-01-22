@@ -10,7 +10,7 @@ vim.api.nvim_create_autocmd({ 'SourcePost' }, {
   callback = vim.schedule_wrap(Material_colortheme_customMap)
 })
 
-local modules = {
+return {
   {
     'marko-cerovac/material.nvim',
     config = function()
@@ -29,4 +29,3 @@ local modules = {
 }
 
 
-return modules

@@ -1,4 +1,4 @@
-local modules = {
+return {
   {
     'nvim-lualine/lualine.nvim',
     config = function ()
@@ -10,6 +10,3 @@ local modules = {
     end
   }
 }
-
-
-return modules

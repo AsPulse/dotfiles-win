@@ -1,5 +1,3 @@
-local modules = {
+return {
   { 'jason0x43/vim-js-indent' }
 }
-
-return modules

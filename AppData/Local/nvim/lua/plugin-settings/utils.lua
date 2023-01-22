@@ -1,4 +1,4 @@
-local modules = {
+return {
   {
     'lewis6991/satellite.nvim',
     config = function ()
@@ -14,6 +14,3 @@ local modules = {
     'dstein64/vim-startuptime'
   }
 }
-
-
-return modules
