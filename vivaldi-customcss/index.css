@@ -6,23 +6,21 @@
 
 /** Tabbar effect */
 #browser .tab {
-  margin: .2rem .1rem;
+  margin: .2rem 0;
 }
 
-#browser #tabs-tabbar-container, #browser #tabs-container, #browser .tab-positionm, #browser #tabs-subcontainer {
+#browser :is(#tabs-tabbar-container, #tabs-container, .tab-position, #tabs-subcontainer) {
   min-height: inherit !important;
   height: inherit !important;
 }
 
 #browser .tab:not(.active) .svg-tab-stack {
-  width: calc(var(--Width) - 0.1rem) !important;
-  height: calc(var(--Height) - 0.2rem) !important;
+  height: calc(var(--Height) - 0.1rem);
 }
 
 
 #browser .tab.active .svg-tab-stack {
-  width: calc(var(--Width) - 0.1rem) !important;
-  height: calc(var(--Height) - 0.4rem) !important;
+  height: calc(var(--Height) - 0.4rem);
 }
 
 #browser .button-toolbar.newtab {
@@ -44,4 +42,9 @@
 
 #browser .tab:not(.active) {
   transform: scale(0.95);
+}
+
+/**Popup */
+#browser.popup :is(#tabs-tabbar-container, #main .bookmark-bar, #panels-container, div.mainbar .toolbar > *:not(.UrlBar-AddressField)) {
+  display: none;
 }
