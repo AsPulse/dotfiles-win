@@ -1,5 +1,7 @@
 return {
   {
+    'nvim-lua/plenary.nvim'
+  }, {
     'lewis6991/satellite.nvim',
     config = function ()
       require('satellite').setup()
