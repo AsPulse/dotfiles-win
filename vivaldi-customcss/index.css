@@ -48,3 +48,8 @@
 #browser.popup :is(#tabs-tabbar-container, #main .bookmark-bar, #panels-container, div.mainbar .toolbar > *:not(.UrlBar-AddressField)) {
   display: none;
 }
+
+/** Tab Progressbar */
+#browser .UrlBar-AddressField .pageload .pageload-indicator {
+  background-color: white;
+}
