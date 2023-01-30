@@ -13,7 +13,6 @@ local modules = {
           "dockerfile",
           "git_rebase", "gitattributes", "gitcommit", "gitignore",
           "html", "json5", "lua", "markdown",
-          "markdown",
         },
         highlight = { enable = true },
         indent = { enable = true }
