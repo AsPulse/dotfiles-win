@@ -1,4 +1,10 @@
 {
+  "deno.enable": true,
+  "deno.lint": true,
+  "deno.unstable": true,
+  "deno.suggest.imports.hosts": {
+    "https://deno.land/": true,
+  },
   "Lua.workspace.library": [
     "C:\\Users\\aspulse\\AppData\\Local\\nvim-data\\site\\pack\\jetpack\\opt\\_\\lua",
     "C:\\Users\\aspulse\\AppData\\Local\\nvim\\lua"

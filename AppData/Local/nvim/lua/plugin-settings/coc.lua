@@ -13,6 +13,7 @@ local modules = {
           "dockerfile",
           "git_rebase", "gitattributes", "gitcommit", "gitignore",
           "html", "json5", "lua", "markdown",
+          "cpp"
         },
         highlight = { enable = true },
         indent = { enable = true }
@@ -37,7 +38,7 @@ local modules = {
       }
     end
   }, {
-    'gpanders/editorconfig.nvim'
+    'editorconfig/editorconfig-vim'
   }
 }
 
@@ -46,7 +47,8 @@ vim.api.nvim_set_var(
   {
     'coc-css', 'coc-docker', 'coc-emmet', 'coc-eslint', 'coc-html', 'coc-json',
     'coc-lightbulb', 'coc-markdownlint', 'coc-rust-analyzer', 'coc-yaml',
-    'coc-tsserver', 'coc-discord-rpc', 'coc-lua', 'coc-sumneko-lua'
+    'coc-tsserver', 'coc-deno', 'coc-discord-rpc', 'coc-lua', 'coc-sumneko-lua',
+    'coc-clangd'
   }
 )
 
