@@ -1,14 +1,20 @@
 function Material_colortheme_customMap()
   vim.cmd [[highlight @field guifg=#a6accd]]
-  vim.cmd [[highlight @property guifg=#ffcb6b]]
+  vim.cmd [[highlight @property guifg=#ffcd6b]]
   vim.cmd [[highlight ModeMsg guifg=#303030]]
+  vim.cmd [[highlight CocFloating guibg=#202331]]
+  vim.cmd [[highlight CocMenuSel guifg=#e63e73 guibg=#403d59]]
+  vim.cmd [[highlight CocPumSearch guifg=#82aaff]]
 end
 
-
-vim.api.nvim_create_autocmd({ 'SourcePost' }, {
-  pattern = { '*' },
-  callback = vim.schedule_wrap(Material_colortheme_customMap)
-})
+vim.schedule(
+  function()
+    if vim.g.colorscheme_material_loaded then
+      vim.cmd 'colorscheme material'
+      Material_colortheme_customMap()
+    end
+  end
+)
 
 return {
   {
@@ -24,6 +30,7 @@ return {
       vim.g.material_style = 'palenight'
       vim.cmd 'colorscheme material'
       Material_colortheme_customMap()
+      vim.g.colorscheme_material_loaded = true
     end
   }
 }

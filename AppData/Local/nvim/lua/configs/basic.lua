@@ -20,4 +20,6 @@ set('background', 'dark')
 set('wildmenu', true)
 set('wildmode', 'list:longest')
 
+set('pumblend', 5)
+
 return nil;

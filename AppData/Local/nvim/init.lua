@@ -1,7 +1,7 @@
 local required = require('util.required')
 
 required.under('configs')
-
+vim.api.nvim_set_var('jetpack_copy_method', 'copy');
 vim.cmd('packadd vim-jetpack')
 local plugins = {{ 'tani/vim-jetpack', opt = 1 }};
 local pluginSettings = required.under('plugin-settings')
