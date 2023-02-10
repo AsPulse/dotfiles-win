@@ -4,6 +4,8 @@ return {
   }, {
     'vim-denops/denops.vim'
   }, {
+    'MunifTanjim/nui.nvim'
+  }, {
     'lewis6991/satellite.nvim',
     config = function ()
       require('satellite').setup()

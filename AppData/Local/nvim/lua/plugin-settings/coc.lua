@@ -45,6 +45,7 @@ local modules = {
 vim.api.nvim_set_var(
   'coc_global_extensions',
   {
+    'coc-tsnip',
     'coc-css', 'coc-docker', 'coc-emmet', 'coc-eslint', 'coc-html', 'coc-json',
     'coc-lightbulb', 'coc-markdownlint', 'coc-rust-analyzer', 'coc-yaml',
     'coc-tsserver', 'coc-deno', 'coc-discord-rpc', 'coc-lua', 'coc-sumneko-lua',
