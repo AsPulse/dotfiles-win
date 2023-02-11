@@ -8,7 +8,7 @@ const usestate: Snippet = {
       type: 'single_line',
     },
     {
-      name: 'default_value',
+      name: 'defaultValue',
       type: 'single_line',
     },
     {
@@ -16,12 +16,12 @@ const usestate: Snippet = {
       type: 'single_line',
     }
   ],
-  render: ({ name, default_value, type }) =>
+  render: ({ name, defaultValue, type }) =>
     `const [${name?.text ?? ''}, set${
       name != null
         ? `${name.text?.charAt(0).toUpperCase()}${name.text?.slice(1)}`
         : ''
-    }] = useState${type != null && type.text !== '' ? `<${type.text}>` : ''}(${default_value?.text ?? ''});`,
+    }] = useState${type != null && type.text !== '' ? `<${type.text}>` : ''}(${defaultValue?.text ?? ''});`,
 };
 
 export default {
