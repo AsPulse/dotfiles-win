@@ -1,6 +1,6 @@
 import { Snippet } from 'https://deno.land/x/tsnip_vim@v0.5/mod.ts';
 
-const state: Snippet = {
+const usestate: Snippet = {
   name: 'Snippet of React useState',
   params: [
     {
@@ -21,9 +21,9 @@ const state: Snippet = {
       name != null
         ? `${name.text?.charAt(0).toUpperCase()}${name.text?.slice(1)}`
         : ''
-    }] = useState${type != null && type.text !== '' ? `<${type.text}>` : ''}(${default_value?.text ?? ''})`,
+    }] = useState${type != null && type.text !== '' ? `<${type.text}>` : ''}(${default_value?.text ?? ''});`,
 };
 
 export default {
-  state,
+  usestate,
 };
