@@ -39,6 +39,9 @@ local modules = {
     end
   }, {
     'editorconfig/editorconfig-vim'
+  }, {
+    'yuki-yano/tsnip.nvim',
+    requires = { 'vim-denops/denops.vim', 'MunifTanjim/nui.nvim' }
   }
 }
 
