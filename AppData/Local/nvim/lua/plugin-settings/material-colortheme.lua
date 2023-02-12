@@ -1,6 +1,7 @@
 function Material_colortheme_customMap()
   require('material').setup({
     lualine_style = 'default',
+    async_loading = false,
     custom_colors = function(colors)
       colors.editor.accent = '#c792ea'
       colors.editor.line_numbers = '#6562a3'
@@ -9,6 +10,7 @@ function Material_colortheme_customMap()
   })
   vim.g.material_style = 'palenight'
   vim.cmd [[colorscheme material]]
+
   vim.cmd [[highlight @field guifg=#a6accd]]
   vim.cmd [[highlight @property guifg=#ffcd6b]]
   vim.cmd [[highlight ModeMsg guifg=#303030]]
@@ -17,6 +19,9 @@ function Material_colortheme_customMap()
   vim.cmd [[highlight CocPumSearch cterm=bold gui=bold]]
 
   vim.cmd [[highlight Normal guibg=none]]
+  vim.cmd [[highlight NormalFloat guibg=none]]
+  vim.cmd [[highlight FloatBorder guibg=none]]
+  vim.cmd [[highlight NormalNC guibg=#181825]]
   vim.cmd [[highlight NonText guibg=none]]
   vim.cmd [[highlight LineNr guibg=none]]
   vim.cmd [[highlight Folded guibg=none]]
@@ -24,9 +29,7 @@ function Material_colortheme_customMap()
 end
 
 if vim.g.isReload then
-  vim.schedule(function ()
-    Material_colortheme_customMap()
-  end)
+  vim.schedule(Material_colortheme_customMap)
 end
 
 return {
