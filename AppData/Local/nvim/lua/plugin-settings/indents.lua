@@ -1,7 +1,7 @@
 return {
   {
     'jason0x43/vim-js-indent',
-    requires = { 
+    requires = {
       'marko-cerovac/material.nvim',
     },
   }

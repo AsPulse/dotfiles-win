@@ -13,3 +13,5 @@ end
 require('jetpack.packer').add(plugins)
 
 required.under('commands')
+
+vim.g.isReload = true;
