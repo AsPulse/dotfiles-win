@@ -22,6 +22,10 @@ local pluginSettings = required.under('plugin-settings')
 require('lazy').setup(pluginSettings, {
   ui = {
     border = 'rounded'
+  },
+  install = {
+    missing = true,
+    colorscheme = { 'material' }
   }
 })
 

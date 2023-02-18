@@ -3,23 +3,6 @@ local modules = {
     'neoclide/coc.nvim',
     branch = 'release'
   }, {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-    config = function()
-      require('nvim-treesitter.configs').setup {
-        ensure_installed = {
-          "typescript", "tsx",
-          "diff",
-          "dockerfile",
-          "git_rebase", "gitattributes", "gitcommit", "gitignore",
-          "html", "json5", "lua", "markdown",
-          "cpp"
-        },
-        highlight = { enable = true },
-        indent = { enable = true }
-      }
-    end
-  }, {
     'lewis6991/gitsigns.nvim' ,
     config = function()
       require('gitsigns').setup {

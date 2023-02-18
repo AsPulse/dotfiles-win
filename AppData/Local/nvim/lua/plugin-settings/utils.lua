@@ -26,5 +26,9 @@ return {
   }, {
     'Allianaab2m/vimskey',
     dependencies = { 'vim-denops/denops.vim' }
+  }, {
+    'kkharji/sqlite.lua'
+  }, {
+    'myusuf3/numbers.vim'
   }
 }
