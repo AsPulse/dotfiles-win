@@ -4,6 +4,7 @@ $NVIM = "$HOME\AppData\Local\nvim"
 $GHDEV = "E:\Persistent\GitHub-Develops"
 $CHEZMOI= "$HOME\.local\share\chezmoi"
 
+$ENV:HOME = $HOME
 $ENV:POSH_PROFILE = $PROFILE
 $ENV:NVIM = $NVIM
 $ENV:GHDEV = $GHDEV
