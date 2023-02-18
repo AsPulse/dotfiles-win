@@ -1,7 +1,7 @@
 return {
   {
     'nvim-lualine/lualine.nvim',
-    requires = { 
+    dependencies = { 
       'marko-cerovac/material.nvim',
     },
     config = function ()

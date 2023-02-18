@@ -21,7 +21,7 @@ function Material_colortheme_customMap()
   vim.cmd [[highlight Normal guibg=none]]
   vim.cmd [[highlight NormalFloat guibg=none]]
   vim.cmd [[highlight FloatBorder guibg=none]]
-  vim.cmd [[highlight NormalNC guibg=#181825]]
+  vim.cmd [[highlight NormalNC guibg=none]]
   vim.cmd [[highlight NonText guibg=none]]
   vim.cmd [[highlight LineNr guibg=none]]
   vim.cmd [[highlight Folded guibg=none]]

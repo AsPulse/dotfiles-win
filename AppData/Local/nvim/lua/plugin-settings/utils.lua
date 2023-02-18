@@ -25,6 +25,6 @@ return {
     'dstein64/vim-startuptime'
   }, {
     'Allianaab2m/vimskey',
-    requires = { 'vim-denops/denops.vim' }
+    dependencies = { 'vim-denops/denops.vim' }
   }
 }

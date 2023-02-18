@@ -4,7 +4,7 @@ local modules = {
     branch = 'release'
   }, {
     'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
+    build = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
@@ -29,7 +29,7 @@ local modules = {
     end
   }, {
     'lukas-reineke/indent-blankline.nvim',
-    requires = { 'marko-cerovac/material.nvim' },
+    dependencies = { 'marko-cerovac/material.nvim' },
     config = function ()
       require('indent_blankline').setup {
         chat_highlight_list = {
@@ -41,7 +41,7 @@ local modules = {
     'editorconfig/editorconfig-vim'
   }, {
     'yuki-yano/tsnip.nvim',
-    requires = { 'vim-denops/denops.vim', 'MunifTanjim/nui.nvim' },
+    dependencies = { 'vim-denops/denops.vim', 'MunifTanjim/nui.nvim' },
   }
 }
 

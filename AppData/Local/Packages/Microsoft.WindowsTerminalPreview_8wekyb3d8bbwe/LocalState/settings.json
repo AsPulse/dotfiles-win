@@ -42,6 +42,8 @@
     {
         "defaults": 
         {
+            "backgroundImage": "desktopWallpaper",
+            "backgroundImageOpacity": 0.1,
             "colorScheme": "Material Palenight",
             "experimental.retroTerminalEffect": false,
             "font": 
@@ -51,9 +53,9 @@
                 "weight": "normal"
             },
             "intenseTextStyle": "all",
-            "opacity": 80,
+            "opacity": 100,
             "padding": "20",
-            "useAcrylic": true,
+            "useAcrylic": false,
             "useAtlasEngine": true
         },
         "list": 
