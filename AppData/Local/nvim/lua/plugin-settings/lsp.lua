@@ -22,7 +22,7 @@ return {
           'tsserver',
           'eslint',
           'lua_ls',
-          'denols',
+          -- 'denols',
           'clangd'
         },
         automatic_installation = true,
@@ -47,6 +47,7 @@ return {
     config = function()
       local cmp = require('cmp')
       local lspkind = require('lspkind')
+      local lspconfig = require('lspconfig')
       cmp.setup({
         enabled = true,
         snippet = {
@@ -55,9 +56,20 @@ return {
           end
         },
         mapping = cmp.mapping.preset.insert({
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          ['<Tab>'] = cmp.mapping.confirm({ select = true }),
+          ['<Tab>'] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            else
+              fallback()
+            end
+          end, { 'i', 's' }),
+
+          ['<S-Tab>'] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item()
+            end
+          end, { 'i', 's' }),
+          ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         window = {
           completion = cmp.config.window.bordered(),
@@ -76,15 +88,54 @@ return {
           })
         }
       })
+      local capabilities = require('cmp_nvim_lsp').default_capabilities()
       require('mason-lspconfig').setup_handlers({
         function(server_name)
-          local opts = {
-            capabilities = require('cmp_nvim_lsp').default_capabilities(),
-          }
-          require('lspconfig')[server_name].setup(opts)
+          local setupfunc = lspconfig[server_name]
+          if server_name == 'tsserver' or server_name == 'eslint' then
+            setupfunc.setup({
+              capabilities = capabilities,
+              root_dir = lspconfig.util.root_pattern('yarn.lock'),
+              single_file_support = false,
+            })
+          elseif server_name == 'denols' then
+            setupfunc.setup({
+              capabilities = capabilities,
+              root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
+              single_file_support = false,
+              init_options = {
+                lint = true,
+                unstable = true
+              }
+            })
+          else
+            setupfunc.setup({ capabilities = capabilities })
+          end
         end
       })
     end
   },
+  {
+    'kkharji/lspsaga.nvim',
+    dependencies = { 'williamboman/mason-lspconfig.nvim' },
+    config = function ()
+      require('lspsaga').setup({})
+      vim.keymap.set('n', 'lrn', function() vim.api.nvim_command('Lspsaga rename') end, {})
+      vim.keymap.set('n', 'lac', function() vim.api.nvim_command('Lspsaga code_action') end, {})
+      vim.keymap.set('n', 'K', function() vim.api.nvim_command('Lspsaga hover_doc') end, {})
+    end
+  },
+  {
+    'stevearc/dressing.nvim',
+    config = function ()
+      require('dressing').setup()
+    end
+  },
+  {
+    'j-hui/fidget.nvim',
+    config = function ()
+      require('fidget').setup{}
+    end
+  },
+  { 'folke/lsp-colors.nvim' }
 }
-

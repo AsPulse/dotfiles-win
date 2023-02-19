@@ -1,15 +1,16 @@
 return {
   { 'nvim-lua/plenary.nvim' },
   { 'vim-denops/denops.vim' },
+  { 'editorconfig/editorconfig-vim' },
   { 'MunifTanjim/nui.nvim' },
-  {
-    'lewis6991/satellite.nvim',
-    config = function ()
-      require('satellite').setup()
-    end
-  },
   { 'wakatime/vim-wakatime' },
-  {  'deris/vim-duzzle' },
+  { 'deris/vim-duzzle' },
+  { 'dstein64/vim-startuptime' },
+  { 'kkharji/sqlite.lua' },
+  {
+    'Allianaab2m/vimskey',
+    dependencies = { 'vim-denops/denops.vim' }
+  },
   {
     'rcarriga/nvim-notify',
     config = function()
@@ -18,11 +19,28 @@ return {
       }
     end
   },
-  { 'dstein64/vim-startuptime' },
   {
-    'Allianaab2m/vimskey',
-    dependencies = { 'vim-denops/denops.vim' }
+    'lewis6991/satellite.nvim',
+    config = function ()
+      require('satellite').setup()
+    end
   },
-  { 'kkharji/sqlite.lua' },
-  { 'myusuf3/numbers.vim' }
+  {
+    'lewis6991/gitsigns.nvim',
+    config = function ()
+      require('gitsigns').setup {
+        signcolumn = false,
+        numhl = true
+      }
+    end
+  },
+  {
+    'lukas-reineke/indent-blankline.nvim',
+    dependencies = { 'marko-cerovac/material.nvim' },
+    config = function ()
+      require('indent_blankline') .setup {
+        chat_highlight_list = { 'NonText' }
+      }
+    end
+  }
 }
