@@ -1,12 +1,18 @@
 return {
   { 'neovim/nvim-lspconfig' },
+  { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'jay-babu/mason-null-ls.nvim' },
   {
     'williamboman/mason.nvim',
     dependencies = { 'neovim/nvim-lspconfig' },
   },
   {
     'williamboman/mason-lspconfig.nvim',
-    dependencies = { 'williamboman/mason.nvim' },
+    dependencies = {
+      'williamboman/mason.nvim',
+      'jose-elias-alvarez/null-ls.nvim',
+      'jay-babu/mason-null-ls.nvim',
+    },
     config = function()
       require('mason').setup({
         ui = {
@@ -20,12 +26,26 @@ return {
       require('mason-lspconfig').setup({
         ensure_installed = {
           'tsserver',
-          'eslint',
           'lua_ls',
-          -- 'denols',
+          'denols',
           'clangd'
         },
         automatic_installation = true,
+      })
+
+      local null_ls = require('null-ls')
+      null_ls.setup({
+        sources = {
+          null_ls.builtins.diagnostics.eslint.with({
+           command = 'node_modules/.bin/eslint.cmd'
+          })
+        }
+      })
+
+      require('mason-null-ls').setup({
+        ensure_installed = nil,
+        automatic_installation = true,
+        automatic_setup = false
       })
     end
   },
@@ -92,13 +112,15 @@ return {
       require('mason-lspconfig').setup_handlers({
         function(server_name)
           local setupfunc = lspconfig[server_name]
-          if server_name == 'tsserver' or server_name == 'eslint' then
+          if server_name == 'tsserver' then
             setupfunc.setup({
               capabilities = capabilities,
               root_dir = lspconfig.util.root_pattern('yarn.lock'),
               single_file_support = false,
             })
-          elseif server_name == 'denols' then
+            return
+          end
+          if server_name == 'denols' then
             setupfunc.setup({
               capabilities = capabilities,
               root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
@@ -108,9 +130,9 @@ return {
                 unstable = true
               }
             })
-          else
-            setupfunc.setup({ capabilities = capabilities })
+            return
           end
+          setupfunc.setup({ capabilities = capabilities })
         end
       })
     end
