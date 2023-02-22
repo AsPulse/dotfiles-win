@@ -69,7 +69,6 @@ return {
     },
     config = function()
       local cmp = require('cmp')
-      local lspkind = require('lspkind')
       local lspconfig = require('lspconfig')
       cmp.setup({
         enabled = true,
@@ -96,7 +95,7 @@ return {
         }),
         window = {
           completion = cmp.config.window.bordered({
-            winhighlight = 'Normal:NonText,FloatBorder:None,Search:None',
+            winhighlight = 'Normal:CmpFloating,FloatBorder:None,Search:None',
             col_offset = -3
           }),
           documentation = cmp.config.window.bordered(),

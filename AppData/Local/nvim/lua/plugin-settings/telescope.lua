@@ -1,6 +1,7 @@
 return {
   {
     'nvim-telescope/telescope.nvim',
+    dependencies = { 'mar' },
     tag = '0.1.0',
     config = function()
       local builtin = require('telescope.builtin')
