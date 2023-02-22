@@ -34,7 +34,7 @@ end
 return {
   {
     'cohama/lexima.vim',
-    event = 'BufEnter *.*',
+    event = 'InsertEnter',
     config = LeximaRulesReset
   }
 }
