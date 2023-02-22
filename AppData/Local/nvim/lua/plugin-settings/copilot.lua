@@ -6,7 +6,12 @@ return {
     config = function()
       require('copilot').setup({
         suggestion = {
-          auto_trigger = true
+          auto_trigger = true,
+          keymap = {
+            accept = '<M-a>',
+            accept_word = '<M-w>',
+            accept_line = '<M-l>',
+          }
         }
       })
     end
