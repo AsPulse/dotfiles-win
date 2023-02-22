@@ -25,8 +25,8 @@ return {
       vim.keymap.set('n', '<leader>fb', builtin('buffers'), {})
       vim.keymap.set('n', '<leader>fh', builtin('help_tags'), {})
       vim.keymap.set('n', '<leader>fd', builtin('diagnostics'), {})
-      vim.keymap.set('n', '<leader>fR', function() require('telescope').extensions.frecency.frecency() end, {})
-      vim.keymap.set('n', '<leader>fr', function() require('telescope').extensions.frecency.frecency({ workspace = 'CWD' }) end, {})
+      vim.keymap.set('n', '<leader>fr', function() require('telescope').extensions.frecency.frecency() end, {})
+      vim.keymap.set('n', '<leader>fR', function() require('telescope').extensions.frecency.frecency({ workspace = 'CWD' }) end, {})
     end,
     config = function ()
       require('telescope').setup({

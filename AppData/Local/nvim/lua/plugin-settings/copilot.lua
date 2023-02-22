@@ -8,7 +8,7 @@ return {
         suggestion = {
           auto_trigger = true,
           keymap = {
-            accept = '<M-a>',
+            accept = '<M-f>',
             accept_word = '<M-w>',
             accept_line = '<M-l>',
           }
