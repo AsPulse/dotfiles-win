@@ -14,6 +14,7 @@ function Material_colortheme_customMap()
 
   vim.cmd [[highlight CmpFloating guifg=#8b90a6 guibg=#2d2d3f]]
   vim.cmd [[highlight CmpItemAbbrMatchDefault gui=bold]]
+  vim.cmd [[highlight BufferLineFill guibg=none]]
 end
 
 return {

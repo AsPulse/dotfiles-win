@@ -1,17 +1,12 @@
 return {
-  { 'neovim/nvim-lspconfig' },
-  { 'jose-elias-alvarez/null-ls.nvim', dependencies = { 'nvim-lua/plenary.nvim' } },
-  { 'jay-babu/mason-null-ls.nvim' },
-  {
-    'williamboman/mason.nvim',
-    dependencies = { 'neovim/nvim-lspconfig' },
-  },
   {
     'williamboman/mason-lspconfig.nvim',
     dependencies = {
+      'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
       'jose-elias-alvarez/null-ls.nvim',
       'jay-babu/mason-null-ls.nvim',
+      'nvim-lua/plenary.nvim'
     },
     config = function()
       require('mason').setup({
@@ -50,12 +45,6 @@ return {
       })
     end
   },
-  { 'onsails/lspkind.nvim' },
-  { 'hrsh7th/vim-vsnip' },
-  { 'hrsh7th/cmp-nvim-lsp' },
-  { 'hrsh7th/cmp-path' },
-  { 'hrsh7th/cmp-buffer' },
-  { 'hrsh7th/cmp-cmdline' },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -187,12 +176,6 @@ return {
       require('dressing').setup()
     end
   },
-  -- {
-  --   'j-hui/fidget.nvim',
-  --   config = function ()
-  --     require('fidget').setup({})
-  --   end
-  -- },
   {
     'folke/lsp-colors.nvim',
   },

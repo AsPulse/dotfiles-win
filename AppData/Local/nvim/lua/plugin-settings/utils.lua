@@ -1,6 +1,4 @@
 return {
-  { 'nvim-lua/plenary.nvim' },
-  { 'vim-denops/denops.vim' },
   { 'editorconfig/editorconfig-vim' },
   { 'MunifTanjim/nui.nvim' },
   { 'wakatime/vim-wakatime' },
