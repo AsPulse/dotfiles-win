@@ -5,7 +5,10 @@ return {
   },
   {
     'kkharji/sqlite.lua',
-    lazy = true
+    lazy = true,
+    init = function ()
+      vim.g.sqlite_clib_path = vim.fn.expand('$HOME') .. '/bin/sqlite3/sqlite3.dll'
+    end
   },
   {
     'tyru/capture.vim',
