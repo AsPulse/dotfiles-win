@@ -95,7 +95,10 @@ return {
           ['<CR>'] = cmp.mapping.confirm({ select = true }),
         }),
         window = {
-          completion = cmp.config.window.bordered(),
+          completion = cmp.config.window.bordered({
+            winhighlight = 'Normal:NonText,FloatBorder:None,Search:None',
+            col_offset = -3
+          }),
           documentation = cmp.config.window.bordered(),
         },
         sources = cmp.config.sources({
@@ -104,11 +107,14 @@ return {
           { name = 'path' },
         }),
         formatting = {
-          format = lspkind.cmp_format({
-            mode = 'symbol',
-            maxwidth = 50,
-            ellipsis_char = '...',
-          })
+          fields = { "kind", "abbr", "menu" },
+          format = function(entry, vim_item)
+            local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+            local strings = vim.split(kind.kind, "%s", { trimempty = true })
+            kind.kind = (strings[1] or '')
+            kind.menu = '    (' .. (strings[2] or '') .. ')'
+            return kind
+          end,
         }
       })
       cmp.setup.cmdline(':', {
@@ -148,6 +154,19 @@ return {
             })
             return
           end
+          if server_name == 'lua_ls' then
+            setupfunc.setup({
+              capabilities = capabilities,
+              settings = {
+                Lua = {
+                  diagnostics = {
+                    globals = { 'vim' }
+                  }
+                }
+              }
+            })
+            return
+          end
           setupfunc.setup({ capabilities = capabilities })
         end
       })
@@ -169,12 +188,12 @@ return {
       require('dressing').setup()
     end
   },
-  {
-    'j-hui/fidget.nvim',
-    config = function ()
-      require('fidget').setup({})
-    end
-  },
+  -- {
+  --   'j-hui/fidget.nvim',
+  --   config = function ()
+  --     require('fidget').setup({})
+  --   end
+  -- },
   {
     'folke/lsp-colors.nvim',
   },

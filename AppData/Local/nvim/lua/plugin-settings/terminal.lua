@@ -32,7 +32,7 @@ function _Toggleterm_cd()
 end
 
 vim.api.nvim_set_keymap("n", "git", "<cmd>lua _Lazygit_toggle()<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("t", "<esc><esc><esc>", "<C-\\><C-n>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("t", "<leader><q>", "<C-\\><C-n>", { noremap = true, silent = true })
 vim.api.nvim_create_user_command('TermReCwd', "lua _Toggleterm_cd()", {})
 
 return modules
