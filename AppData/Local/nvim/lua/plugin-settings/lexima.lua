@@ -21,12 +21,6 @@ function LeximaRulesReset()
   vim.api.nvim_set_var('isLeximaLoaded', true);
 end
 
-local modules = {
-  {
-    'cohama/lexima.vim',
-    config = LeximaRulesReset
-  }
-}
 
 if vim.g.isLeximaLoaded == nil then
   vim.api.nvim_set_var('isLeximaLoaded', false)
@@ -37,4 +31,10 @@ if vim.api.nvim_get_var('isLeximaLoaded') then
   require('notify')('Lexima Rules Reloaded!', 'info', { timeout = 500, render = 'minimal', stages = 'fade' })
 end
 
-return modules
+return {
+  {
+    'cohama/lexima.vim',
+    event = 'BufEnter *.*',
+    config = LeximaRulesReset
+  }
+}

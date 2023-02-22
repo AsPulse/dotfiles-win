@@ -16,6 +16,7 @@ if not vim.loop.fs_stat(lazypath) then
   })
 end
 vim.opt.rtp:prepend(lazypath)
+vim.keymap.set('n', '<leader>lazy', '<cmd>Lazy<cr>', { noremap = true })
 
 -- Setup Plugins
 local pluginSettings = required.under('plugin-settings')

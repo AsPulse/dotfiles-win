@@ -1,6 +1,7 @@
 return {
   {
     'hrsh7th/nvim-cmp',
+    event = { 'BufEnter *.*', 'CmdlineEnter' },
     dependencies = {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'onsails/lspkind.nvim' },
@@ -62,12 +63,16 @@ return {
           format = function(entry, vim_item)
             local kind = require('lspkind').cmp_format({
               mode = 'symbol_text',
+              menu = {
+                tsnip = 'Snippet'
+              },
               maxwidth = 50,
             })(entry, vim_item)
             local strings = vim.split(kind.kind, '%s', { trimempty = true })
             if entry.source.name == 'tsnip' then
               kind.kind = ''
               kind.menu = 'Snippet'
+              kind.kind_hl_group = 'CmpItemKindSnippet'
             else
               kind.kind = (strings[1] or '')
               kind.menu = (strings[2] or '')
@@ -133,3 +138,4 @@ return {
     end
   }
 }
+

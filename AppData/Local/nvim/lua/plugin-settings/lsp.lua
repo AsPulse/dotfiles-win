@@ -1,6 +1,7 @@
 return {
   {
     'williamboman/mason-lspconfig.nvim',
+    lazy = true,
     dependencies = {
       'neovim/nvim-lspconfig',
       'williamboman/mason.nvim',
@@ -47,6 +48,7 @@ return {
   },
   {
     'kkharji/lspsaga.nvim',
+    event = 'BufEnter *.*',
     dependencies = { 'williamboman/mason-lspconfig.nvim' },
     config = function ()
       require('lspsaga').setup({})
@@ -57,18 +59,13 @@ return {
   },
   {
     'stevearc/dressing.nvim',
+    event = 'BufEnter *.*',
     config = function ()
       require('dressing').setup()
     end
   },
   {
     'folke/lsp-colors.nvim',
+    event = 'BufEnter *.*',
   },
-  {
-    'folke/noice.nvim',
-    dependencies = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' },
-    config = function ()
-      require('noice').setup({})
-    end
-  }
 }

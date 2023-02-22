@@ -1,11 +1,14 @@
 return {
   {
-    'nvim-treesitter/nvim-treesitter',
-    build = ':TSUpdate',
-  }, {
     'yioneko/nvim-yati',
+    event = 'BufEnter *.*',
     version = '*',
-    dependencies = 'nvim-treesitter/nvim-treesitter',
+    dependencies = {
+      {
+        'nvim-treesitter/nvim-treesitter',
+        build = ':TSUpdate',
+      },
+    },
     config = function()
       require('nvim-treesitter.configs').setup {
         ensure_installed = {
@@ -28,7 +31,5 @@ return {
         }
       }
     end
-  }, {
-    'AckslD/nvim-anywise-reg.lua'
   }
 }

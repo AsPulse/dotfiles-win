@@ -14,6 +14,19 @@ function Material_colortheme_customMap()
 
   vim.cmd [[highlight CmpFloating guifg=#8b90a6 guibg=#2d2d3f]]
   vim.cmd [[highlight CmpItemAbbrMatchDefault gui=bold]]
+
+  vim.cmd [[highlight CmpItemKindText guifg=#676e95 gui=bold]]
+  vim.cmd [[highlight CmpItemKindInterface guifg=#ffcb3b gui=bold]]
+
+  vim.cmd [[highlight CmpItemKindFunction guifg=#c792ea gui=bold]]
+  vim.cmd [[highlight! link CmpItemKindMethod CmpItemKindFunction]]
+
+  vim.cmd [[highlight CmpItemKindVariable guifg=#89ddff gui=bold]]
+  vim.cmd [[highlight! link CmpItemKindField CmpItemKindVariable ]]
+
+  vim.cmd [[highlight CmpItemKindKeyword guifg=#80cbc4 gui=bold]]
+  vim.cmd [[highlight CmpItemKindSnippet guifg=#ff5370 gui=bold]]
+
   vim.cmd [[highlight BufferLineFill guibg=none]]
 end
 
@@ -32,6 +45,7 @@ return {
       })
       vim.g.material_style = 'palenight'
       vim.cmd [[colorscheme material]]
+      Material_colortheme_customMap()
       vim.api.nvim_create_autocmd({ 'VimEnter' }, {
         callback = vim.schedule_wrap(Material_colortheme_customMap)
       })
