@@ -36,9 +36,10 @@ return {
       local null_ls = require('null-ls')
       null_ls.setup({
         sources = {
-          null_ls.builtins.diagnostics.eslint.with({
-           command = 'node_modules/.bin/eslint.cmd'
-          })
+          null_ls.builtins.code_actions.eslint_d,
+          null_ls.builtins.diagnostics.eslint_d,
+          null_ls.builtins.formatting.eslint_d,
+          null_ls.builtins.diagnostics.editorconfig_checker
         }
       })
 
@@ -142,8 +143,8 @@ return {
     dependencies = { 'williamboman/mason-lspconfig.nvim' },
     config = function ()
       require('lspsaga').setup({})
-      vim.keymap.set('n', 'lrn', function() vim.api.nvim_command('Lspsaga rename') end, {})
-      vim.keymap.set('n', 'lac', function() vim.api.nvim_command('Lspsaga code_action') end, {})
+      vim.keymap.set('n', '<leader>rn', function() vim.api.nvim_command('Lspsaga rename') end, {})
+      vim.keymap.set('n', '<leader>ac', function() vim.api.nvim_command('Lspsaga code_action') end, {})
       vim.keymap.set('n', 'K', function() vim.api.nvim_command('Lspsaga hover_doc') end, {})
     end
   },
@@ -159,5 +160,12 @@ return {
       require('fidget').setup{}
     end
   },
-  { 'folke/lsp-colors.nvim' }
+  { 'folke/lsp-colors.nvim' },
+  {
+    'folke/noice.nvim',
+    dependencies = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' },
+    config = function ()
+      require('noice').setup({})
+    end
+  }
 }
