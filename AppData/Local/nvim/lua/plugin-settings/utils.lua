@@ -42,5 +42,17 @@ return {
         chat_highlight_list = { 'NonText' }
       }
     end
+  },
+  {
+    'petertriho/nvim-scrollbar',
+    config = function ()
+      require('scrollbar').setup()
+    end
+  },
+  {
+    'tyru/capture.vim'
+  },
+  {
+    'jghauser/mkdir.nvim'
   }
 }

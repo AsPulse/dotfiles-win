@@ -55,6 +55,7 @@ return {
   { 'hrsh7th/cmp-nvim-lsp' },
   { 'hrsh7th/cmp-path' },
   { 'hrsh7th/cmp-buffer' },
+  { 'hrsh7th/cmp-cmdline' },
   {
     'hrsh7th/nvim-cmp',
     dependencies = {
@@ -64,6 +65,7 @@ return {
       'hrsh7th/cmp-nvim-lsp',
       'hrsh7th/cmp-path',
       'hrsh7th/cmp-buffer',
+      'hrsh7th/cmp-cmdline'
     },
     config = function()
       local cmp = require('cmp')
@@ -108,6 +110,19 @@ return {
             ellipsis_char = '...',
           })
         }
+      })
+      cmp.setup.cmdline(':', {
+        mapping = cmp.mapping.preset.cmdline(),
+        sources = cmp.config.sources({
+          { name = 'path' },
+        }, {
+          {
+            name = 'cmdline',
+            option = {
+              ignore_cmds = { 'Man', '!' }
+            }
+          }
+        })
       })
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
       require('mason-lspconfig').setup_handlers({
@@ -157,10 +172,12 @@ return {
   {
     'j-hui/fidget.nvim',
     config = function ()
-      require('fidget').setup{}
+      require('fidget').setup({})
     end
   },
-  { 'folke/lsp-colors.nvim' },
+  {
+    'folke/lsp-colors.nvim',
+  },
   {
     'folke/noice.nvim',
     dependencies = { 'MunifTanjim/nui.nvim', 'rcarriga/nvim-notify' },

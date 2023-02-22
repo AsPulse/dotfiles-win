@@ -35,6 +35,7 @@ end
 return {
   {
     'marko-cerovac/material.nvim',
+    dependencies = { 'folke/lsp-colors.nvim' },
     config = function()
       Material_colortheme_customMap()
     end
