@@ -4,23 +4,22 @@ return {
     event = 'VeryLazy',
     dependencies = {
       { 'marko-cerovac/material.nvim' },
-      {
-        'SmiteshP/nvim-gps',
-        dependencies = { 'nvim-treesitter/nvim-treesitter' },
-      }
+      { 'SmiteshP/nvim-navic' }
     },
     config = function ()
-      local gps = require('nvim-gps')
-      gps.setup({})
+      local navic = require('nvim-navic')
+      navic.setup({
+        highlight = false,
+      })
       require('lualine').setup {
         sections = {
           lualine_c = {
             {
               function()
-                local loc = gps.get_location()
+                local loc = navic.get_location()
                 return (loc or '')
               end,
-              condition = gps.is_available
+              condition = navic.is_available
             },
           }
         },

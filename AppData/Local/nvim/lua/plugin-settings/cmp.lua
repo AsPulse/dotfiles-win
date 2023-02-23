@@ -1,5 +1,10 @@
 return {
   {
+    'SmiteshP/nvim-navic',
+    lazy = true,
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+  },
+  {
     'hrsh7th/nvim-cmp',
     event = { 'BufEnter *.*', 'CmdlineEnter' },
     dependencies = {
@@ -16,6 +21,7 @@ return {
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-cmdline' },
+      { 'SmiteshP/nvim-navic' }
     },
     config = function()
       local cmp = require('cmp')
@@ -95,12 +101,19 @@ return {
           }
         })
       })
+      local navic = require('nvim-navic')
       local capabilities = require('cmp_nvim_lsp').default_capabilities()
+      local on_attach = function (client, bufnr)
+        if client.server_capabilities.documentSymbolProvider then
+          navic.attach(client, bufnr)
+        end
+      end
       require('mason-lspconfig').setup_handlers({
         function(server_name)
           local setupfunc = lspconfig[server_name]
           if server_name == 'tsserver' then
             setupfunc.setup({
+              on_attach = on_attach,
               capabilities = capabilities,
               root_dir = lspconfig.util.root_pattern('yarn.lock'),
               single_file_support = false,
@@ -109,6 +122,7 @@ return {
           end
           if server_name == 'denols' then
             setupfunc.setup({
+              on_attach = on_attach,
               capabilities = capabilities,
               root_dir = lspconfig.util.root_pattern('deno.json', 'deno.jsonc'),
               single_file_support = false,
@@ -121,6 +135,7 @@ return {
           end
           if server_name == 'lua_ls' then
             setupfunc.setup({
+              on_attach = on_attach,
               capabilities = capabilities,
               settings = {
                 Lua = {
@@ -132,7 +147,7 @@ return {
             })
             return
           end
-          setupfunc.setup({ capabilities = capabilities })
+          setupfunc.setup({ capabilities = capabilities, on_attach = on_attach })
         end
       })
     end
