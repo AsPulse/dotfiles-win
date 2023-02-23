@@ -25,5 +25,9 @@ return {
   {
     'dstein64/vim-startuptime',
     cmd = 'StartupTime'
+  },
+  {
+    'tpope/vim-surround',
+    event = 'BufEnter *.*',
   }
 }

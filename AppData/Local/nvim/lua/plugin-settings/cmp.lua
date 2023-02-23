@@ -21,6 +21,7 @@ return {
       { 'hrsh7th/cmp-path' },
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-cmdline' },
+      { 'yutkat/cmp-mocword' },
       { 'SmiteshP/nvim-navic' }
     },
     config = function()
@@ -63,6 +64,7 @@ return {
           { name = 'tsnip' },
           { name = 'buffer' },
           { name = 'path' },
+          { name = 'mocword' },
         }),
         formatting = {
           fields = { 'kind', 'abbr', 'menu' },
@@ -107,6 +109,9 @@ return {
         if client.server_capabilities.documentSymbolProvider then
           navic.attach(client, bufnr)
         end
+        local bufopts = { noremap = true, silent = true, buffer = bufnr }
+        vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
+        vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, bufopts)
       end
       require('mason-lspconfig').setup_handlers({
         function(server_name)
