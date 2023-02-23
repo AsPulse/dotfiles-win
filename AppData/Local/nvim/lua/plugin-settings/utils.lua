@@ -29,5 +29,19 @@ return {
   {
     'tpope/vim-surround',
     event = 'BufEnter *.*',
+  },
+  {
+    'nvim-tree/nvim-web-devicons',
+    config = function ()
+      require('nvim-web-devicons').setup({
+        override = {
+          ts = {
+            icon = 'ﯤ',
+            color = '#3178c6',
+            name = 'TypeScript'
+          }
+        }
+      })
+    end
   }
 }

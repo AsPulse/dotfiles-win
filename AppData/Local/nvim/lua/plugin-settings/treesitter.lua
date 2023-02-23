@@ -8,6 +8,12 @@ return {
         'nvim-treesitter/nvim-treesitter',
         build = ':TSUpdate',
       },
+      {
+        'nvim-treesitter/nvim-treesitter-context',
+        config = function()
+          require('treesitter-context').setup ({})
+        end
+      }
     },
     config = function()
       require('nvim-treesitter.configs').setup {
@@ -30,6 +36,13 @@ return {
           default_fallback = 'auto'
         }
       }
+    end
+  },
+  {
+    'norcalli/nvim-colorizer.lua',
+    event = 'BufAdd *.*',
+    config = function()
+      require('colorizer').setup()
     end
   }
 }

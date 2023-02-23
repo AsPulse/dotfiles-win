@@ -11,5 +11,12 @@ return {
   {
     'vbe0201/vimdiscord',
     event = 'VeryLazy',
+  },
+  {
+    'jbyuki/instant.nvim',
+    event = 'VeryLazy',
+    config = function()
+      vim.g.instant_username = 'AsPulse'
+    end
   }
 }

@@ -2,7 +2,7 @@ return {
   {
     'lambdalisue/fern.vim',
     cmd = { 'Fern' },
-    dependencies = { 
+    dependencies = {
       { 'antoinemadec/FixCursorHold.nvim' },
       {
         'lambdalisue/fern-renderer-nerdfont.vim',
