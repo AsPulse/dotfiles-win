@@ -1,4 +1,4 @@
-local modules = {
+return {
   {
     'terrortylor/nvim-comment',
     event = 'BufEnter *.*',
@@ -7,9 +7,3 @@ local modules = {
     end
   }
 }
-
-vim.keymap.set('n', '<F12>', '<cmd>CommentToggle<cr>', { silent = true, remap = false })
-vim.keymap.set('v', '<F12>', '<cmd>\'<,\'>CommentToggle<cr>', { silent = true, remap = false })
-
-
-return modules
