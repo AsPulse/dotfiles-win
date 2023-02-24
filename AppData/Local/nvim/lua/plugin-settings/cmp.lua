@@ -22,7 +22,8 @@ return {
       { 'hrsh7th/cmp-buffer' },
       { 'hrsh7th/cmp-cmdline' },
       { 'yutkat/cmp-mocword' },
-      { 'SmiteshP/nvim-navic' }
+      { 'SmiteshP/nvim-navic' },
+      { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
     },
     config = function()
       local cmp = require('cmp')
@@ -117,8 +118,31 @@ return {
         function(server_name)
           local setupfunc = lspconfig[server_name]
           if server_name == 'tsserver' then
+            local tsUtils = require('nvim-lsp-ts-utils')
             setupfunc.setup({
-              on_attach = on_attach,
+              init_options = tsUtils.init_options,
+              on_attach = function(client, bufnr)
+                on_attach(client, bufnr)
+                vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+                  buffer = bufnr,
+                  callback = function()
+                    vim.lsp.buf.format({ timeout_ms = 5000 })
+                  end
+                })
+                vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
+                  buffer = bufnr,
+                  -- execute after wait 1 second with timer
+                  callback = function()
+                    vim.loop.new_timer():start(
+                      1000, 0, vim.schedule_wrap(function()
+                        vim.lsp.buf.format({ timeout_ms = 5000 })
+                      end)
+                    )
+                  end
+                })
+                tsUtils.setup({})
+                tsUtils.setup_client(client)
+              end,
               capabilities = capabilities,
               root_dir = lspconfig.util.root_pattern('yarn.lock'),
               single_file_support = false,
