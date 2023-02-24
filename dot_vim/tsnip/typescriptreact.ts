@@ -24,6 +24,31 @@ const state: Snippet = {
     }] = useState${type != null && type.text !== '' ? `<${type.text}>` : ''}(${defaultValue?.text ?? ''});`,
 };
 
+const component: Snippet = {
+  name: 'Snippet of react function component',
+  params: [
+    {
+      name: 'componentName',
+      type: 'single_line',
+    },
+    {
+      name: 'typeAnnotation',
+      type: 'single_line',
+    },
+  ],
+  render: ({ typeAnnotation, componentName }) => {
+    const name = componentName?.text === undefined ? 'ComponentName' : `${componentName.text.charAt(0).toUpperCase()}${componentName.text.slice(1)}`;
+    return [
+      `export const ${name} = ({ ${typeAnnotation?.text?.split(/\s*[,;]\s*/g)?.map(v => v.split(':')[0])?.join(', ') ?? ''} }: { ${typeAnnotation?.text ?? ''} }) => {`,
+      '  return (',
+      '    <>',
+      '    </>',
+      '  );',
+      '};',
+    ].join('\n')
+  }
+}
+
 export default {
-  state,
+  state, component
 };
