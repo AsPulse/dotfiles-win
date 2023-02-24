@@ -9,7 +9,7 @@ return {
     dependencies = { 'vim-denops/denops.vim' }
   },
   {
-    'vbe0201/vimdiscord',
+    'andweeb/presence.nvim',
     event = 'VeryLazy',
   },
   {
