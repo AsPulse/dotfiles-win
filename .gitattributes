@@ -1,1 +1,1 @@
-*userdict.txt text diff=to_utf8
+*userdict.txt text diff=to_utf8 working-tree-encoding=UTF-16LE-BOM eol=CRLF
