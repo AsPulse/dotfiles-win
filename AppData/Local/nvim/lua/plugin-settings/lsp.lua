@@ -1,3 +1,7 @@
+function file_exists(name)
+   local f=io.open(name,'r')
+   if f ~= nil then io.close(f) return true else return false end
+end
 return {
   {
     'williamboman/mason-lspconfig.nvim',
@@ -30,14 +34,16 @@ return {
       })
 
       local null_ls = require('null-ls')
-      local condition = function(utiles)
-        return utils.root_has_file('package.json')
+      local condition = function()
+        local path = vim.fn.getcwd() .. '\\package.json'
+        local isExists = file_exists(path)
+        return isExists
       end
       null_ls.setup({
         sources = {
-          null_ls.builtins.code_actions.eslint_d.with({ condition = condition }),
-          null_ls.builtins.diagnostics.eslint_d.with({ condition = condition }),
-          null_ls.builtins.formatting.eslint_d.with({ condition = condition }),
+          null_ls.builtins.code_actions.eslint_d.with({ runtime_condition = condition }),
+          null_ls.builtins.diagnostics.eslint_d.with({ runtime_condition = condition }),
+          null_ls.builtins.formatting.eslint_d.with({ runtime_condition = condition }),
           null_ls.builtins.diagnostics.editorconfig_checker
         }
       })
