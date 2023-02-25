@@ -24,7 +24,11 @@ Import-Module Terminal-Icons
 
 Set-Alias v neovide
 Set-Alias vim nvim
-
+function dotfiles {
+  chezmoi add "~\.skk\CorvusSKK\userdict.txt"
+  chezmoi add "~\.skk\neovim-userdict.txt"
+  chezmoi apply
+}
 Set-Alias touch New-Item
 function importgconfig {
   git config --local include.path ../.gitconfig
