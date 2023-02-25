@@ -1,5 +1,9 @@
 return {
   {
+    'vim-denops/denops.vim',
+    lazy = true,
+  },
+  {
     'deris/vim-duzzle',
     cmd = 'DuzzleStart'
   },
