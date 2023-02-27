@@ -21,10 +21,15 @@ return {
               end,
               condition = navic.is_available
             },
-          }
+          },
         },
         options = {
           theme = 'material-nvim',
+        },
+        extensions = {
+          'fern',
+          'quickfix',
+          'toggleterm'
         }
       }
     end
