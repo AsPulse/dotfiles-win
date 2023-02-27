@@ -8,7 +8,6 @@ return {
       require('denops-lazy').load('skkeleton', { wait_load = false })
       vim.keymap.set('i', '<C-j>', '<Plug>(skkeleton-toggle)', { remap = true })
       vim.keymap.set('c', '<C-j>', '<Plug>(skkeleton-toggle)', { remap = true })
-      require('notify')('Initializing Skkeleton...')
       vim.fn['skkeleton#config']({
         eggLikeNewline = true,
         globalDictionaries = {

@@ -23,7 +23,7 @@ return {
   },
   {
     'lewis6991/gitsigns.nvim',
-    event = 'BufEnter *.*',
+    event = { 'BufEnter *.*', 'VeryLazy' },
     config = function ()
       require('gitsigns').setup {
         signcolumn = false,
@@ -33,7 +33,7 @@ return {
   },
   {
     'lukas-reineke/indent-blankline.nvim',
-    event = 'BufEnter *.*',
+    event = { 'BufEnter *.*', 'VeryLazy' },
     dependencies = { 'marko-cerovac/material.nvim' },
     config = function ()
       require('indent_blankline') .setup {

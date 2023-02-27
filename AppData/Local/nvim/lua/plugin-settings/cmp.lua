@@ -6,7 +6,7 @@ return {
   },
   {
     'hrsh7th/nvim-cmp',
-    event = { 'BufEnter *.*', 'CmdlineEnter' },
+    event = { 'BufEnter *.*', 'CmdlineEnter', 'VeryLazy' },
     dependencies = {
       { 'williamboman/mason-lspconfig.nvim' },
       { 'onsails/lspkind.nvim' },

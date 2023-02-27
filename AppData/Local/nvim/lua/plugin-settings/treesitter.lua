@@ -1,7 +1,7 @@
 return {
   {
     'yioneko/nvim-yati',
-    event = 'BufEnter *.*',
+    event = { 'BufEnter *.*', 'VeryLazy' },
     version = '*',
     dependencies = {
       {
@@ -40,7 +40,7 @@ return {
   },
   {
     'norcalli/nvim-colorizer.lua',
-    event = 'BufAdd *.*',
+    event = { 'BufAdd *.*', 'VeryLazy' },
     config = function()
       require('colorizer').setup()
     end
