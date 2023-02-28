@@ -1,11 +1,13 @@
 return {
   {
     'SmiteshP/nvim-navic',
+    enabled = false,
     lazy = true,
     dependencies = { 'nvim-treesitter/nvim-treesitter' },
   },
   {
     'hrsh7th/nvim-cmp',
+    enabled = false,
     event = { 'BufEnter *.*', 'CmdlineEnter', 'VeryLazy' },
     dependencies = {
       { 'williamboman/mason-lspconfig.nvim' },
