@@ -9,8 +9,14 @@ return {
     dependencies = { 'vim-denops/denops.vim' }
   },
   {
-    'andweeb/presence.nvim',
+    'AsPulse/presence.nvim',
     event = 'VeryLazy',
+    config = function ()
+      require('presence').setup({
+        auto_update = true,
+        buttons = true,
+      })
+    end
   },
   {
     'jbyuki/instant.nvim',
