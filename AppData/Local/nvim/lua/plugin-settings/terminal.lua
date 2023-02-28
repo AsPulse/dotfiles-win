@@ -9,7 +9,7 @@ local _terminal_lazygit_cwd = nil
 local function _terminal_worker_ready()
   if _terminal_worker == nil then
     _terminal_worker = require('toggleterm.terminal').Terminal:new({
-      cmd = 'powershell',
+      cmd = 'pwsh',
       dir = vim.fn.getcwd(),
       direction = 'float',
       hidden = true,
