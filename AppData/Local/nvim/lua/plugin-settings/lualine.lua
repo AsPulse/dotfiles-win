@@ -2,7 +2,6 @@ return {
   {
     'nvim-lualine/lualine.nvim',
     event = 'VeryLazy',
-    enabled = false,
     dependencies = {
       { 'marko-cerovac/material.nvim' },
       { 'SmiteshP/nvim-navic' }
