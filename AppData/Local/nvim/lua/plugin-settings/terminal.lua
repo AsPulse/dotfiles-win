@@ -54,7 +54,7 @@ end
 local function _terminal_server_open()
   if _terminal_server == nil then
     _terminal_server = require('toggleterm.terminal').Terminal:new({
-      cmd = 'powershell',
+      cmd = 'pwsh',
       dir = vim.fn.getcwd(),
       direction = 'float',
       hidden = true,
@@ -91,18 +91,18 @@ return {
     event = { 'VeryLazy' },
     init = function()
 
-    local powershell_options = {
-    shell = vim.fn.executable 'pwsh' == 1 and 'pwsh' or 'powershell',
-    shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
-    shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait',
-    shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode',
-    shellquote = '',
-    shellxquote = '',
-    }
+      local powershell_options = {
+        shell = 'pwsh',
+        shellcmdflag = '-NoLogo -NoProfile -ExecutionPolicy RemoteSigned -Command [Console]::InputEncoding=[Console]::OutputEncoding=[System.Text.Encoding]::UTF8;',
+        shellredir = '-RedirectStandardOutput %s -NoNewWindow -Wait',
+        shellpipe = '2>&1 | Out-File -Encoding UTF8 %s; exit $LastExitCode',
+        shellquote = '',
+        shellxquote = '',
+      }
 
-    for option, value in pairs(powershell_options) do
-    vim.opt[option] = value
-    end
+      for option, value in pairs(powershell_options) do
+      vim.opt[option] = value
+      end
 
       vim.keymap.set('n', '<leader>git', _terminal_lazygit_open, { noremap = true, silent = true })
       vim.keymap.set('n', '<leader>termw', _terminal_worker_open, { noremap = true, silent = true })
