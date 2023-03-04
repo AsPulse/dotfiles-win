@@ -15,6 +15,7 @@ local function _terminal_worker_ready()
       hidden = true,
       count = 2,
     })
+    _terminal_worker:spawn()
     _terminal_worker_cwd = vim.fn.getcwd()
   end
   if _terminal_worker_cwd ~= vim.fn.getcwd() then
@@ -42,6 +43,7 @@ local function _terminal_lazygit_ready()
       hidden = true,
       count = 1,
     })
+    _terminal_lazygit:spawn()
     _terminal_lazygit_cwd = vim.fn.getcwd()
   end
 end
