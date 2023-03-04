@@ -3,28 +3,48 @@
   filter: none !important;
 }
 
-
-/** Tabbar effect */
-#browser .tab {
-  margin: .2rem 0;
-}
-
-#browser :is(#tabs-tabbar-container, #tabs-container, .tab-position, #tabs-subcontainer) {
-  min-height: inherit !important;
+/** Tab Positions */
+#browser #tabs-tabbar-container {
   height: inherit !important;
 }
 
-#browser .tab:not(.active) .svg-tab-stack {
-  height: calc(var(--Height) - 0.1rem);
+#browser :is(#tabs-container, #tabs-subcontainer) {
+  min-height: inherit;
+  height: auto;
+}
+
+#browser #tabs-container div.resize > div {
+  padding-bottom: .4rem;
+}
+#browser #tabs-subcontainer > div {
+  padding: .3rem 0;
 }
 
 
-#browser .tab.active .svg-tab-stack {
-  height: calc(var(--Height) - 0.4rem);
+#browser div.tab-strip {
+  display: inline-flex;
+  width: auto;
 }
 
-#browser .button-toolbar.newtab {
-  top: 4px !important;
+#browser .tab-position:has(.tab:not(.pinned)) {
+  max-width: inherit;
+  max-height: inherit;
+  height: inherit;
+  padding: 0 .3rem 0 .3rem;
+}
+
+#browser .tab-position:has(.tab.pinned) {
+  max-width: inherit;
+  max-height: inherit;
+  height: inherit;
+  padding: 0;
+}
+
+/** Tab Stack */
+.svg-tab-stack { display: none; }
+#browser .tab-position.is-substack > div {
+  border-bottom: 2px solid #70acff;
+  margin-bottom: -2px;
 }
 
 /** Tab Colors */
@@ -36,12 +56,9 @@
 }
 
 /** Tab Scale */
-#browser .tab {
+#browser .tab.active {
   transition: .4s cubic-bezier(0,.8,.2,1) all;
-}
-
-#browser .tab:not(.active) {
-  transform: scale(0.95);
+  transform: scale(1.05);
 }
 
 /**Popup */
@@ -53,3 +70,5 @@
 #browser .UrlBar-AddressField .pageload .pageload-indicator {
   background-color: white;
 }
+
+
