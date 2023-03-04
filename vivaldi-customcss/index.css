@@ -15,7 +15,7 @@
 
 #browser #tabs-container div.resize > div {
   padding-bottom: .3rem;
-  overflow: visible;
+  overflow-y: visible;
 }
 #browser #tabs-subcontainer > div {
   padding: .3rem 0;
