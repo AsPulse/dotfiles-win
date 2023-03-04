@@ -25,7 +25,7 @@ return {
       })
       require('mason-lspconfig').setup({
         ensure_installed = {
-          'tsserver',
+          'vtsls',
           'lua_ls',
           'denols',
           'clangd'

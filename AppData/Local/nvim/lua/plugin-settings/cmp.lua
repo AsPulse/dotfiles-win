@@ -23,7 +23,14 @@ return {
       { 'hrsh7th/cmp-cmdline' },
       { 'yutkat/cmp-mocword' },
       { 'SmiteshP/nvim-navic' },
-      { 'jose-elias-alvarez/nvim-lsp-ts-utils' }
+      {
+        'yioneko/nvim-vtsls',
+        config = function()
+          require('vtsls').config({
+            name = 'vtsls'
+          })
+        end
+      }
     },
     config = function()
       local cmp = require('cmp')
@@ -113,14 +120,15 @@ return {
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
         vim.keymap.set('n', '<leader>gd', vim.lsp.buf.definition, bufopts)
         vim.keymap.set('n', '<leader>gr', vim.lsp.buf.references, bufopts)
+        client.server_capabilities.document_formatting = false
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
       end
       require('mason-lspconfig').setup_handlers({
         function(server_name)
           local setupfunc = lspconfig[server_name]
-          if server_name == 'tsserver' then
-            local tsUtils = require('nvim-lsp-ts-utils')
+          if server_name == 'vtsls' then
             setupfunc.setup({
-              init_options = tsUtils.init_options,
               on_attach = function(client, bufnr)
                 on_attach(client, bufnr)
                 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
@@ -140,8 +148,6 @@ return {
                     )
                   end
                 })
-                tsUtils.setup({})
-                tsUtils.setup_client(client)
               end,
               capabilities = capabilities,
               root_dir = lspconfig.util.root_pattern('yarn.lock'),
