@@ -27,6 +27,8 @@ function Material_colortheme_customMap()
   vim.cmd [[highlight CmpItemKindKeyword guifg=#80cbc4 gui=bold]]
   vim.cmd [[highlight CmpItemKindSnippet guifg=#ff5370 gui=bold]]
 
+  vim.cmd [[highlight TreesitterContext guibg=#665e8f]]
+
   vim.cmd [[highlight BufferLineFill guibg=none]]
 end
 
