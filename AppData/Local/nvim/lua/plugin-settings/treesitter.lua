@@ -22,7 +22,7 @@ return {
           'diff',
           'dockerfile',
           'git_rebase', 'gitattributes', 'gitcommit', 'gitignore',
-          'html', 'json5', 'lua', 'markdown',
+          'html', 'json5', 'lua', 'markdown', 'yaml',
           'cpp'
         },
         highlight = { enable = true },

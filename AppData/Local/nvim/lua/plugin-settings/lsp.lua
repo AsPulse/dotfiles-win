@@ -28,7 +28,8 @@ return {
           'vtsls',
           'lua_ls',
           'denols',
-          'clangd'
+          'clangd',
+          'yamlls'
         },
         automatic_installation = true,
       })

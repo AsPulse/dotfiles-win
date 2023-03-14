@@ -134,18 +134,7 @@ return {
                 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
                   buffer = bufnr,
                   callback = function()
-                    vim.lsp.buf.format({ timeout_ms = 5000 })
-                  end
-                })
-                vim.api.nvim_create_autocmd({ 'InsertLeave' }, {
-                  buffer = bufnr,
-                  -- execute after wait 1 second with timer
-                  callback = function()
-                    vim.loop.new_timer():start(
-                      1000, 0, vim.schedule_wrap(function()
-                        vim.lsp.buf.format({ timeout_ms = 5000 })
-                      end)
-                    )
+                    vim.lsp.buf.format({ timeout_ms = 20000 })
                   end
                 })
               end,
